@@ -8,8 +8,8 @@ import org.junit.Test;
 public class SimultaneouslySOISubmission {
 
     public static String first = "0";
-    public static String second = "1";
-    public static String third = "1";
+    public static String second = "0";
+    public static String third = "0";
 
     @Before
     public void setUp() {
@@ -40,6 +40,8 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
+            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
                 first = "1";
@@ -49,11 +51,14 @@ public class SimultaneouslySOISubmission {
         }
         for(int i=0;i<3000;i++) {
             if(first.equals("1") && second.equals("1") && third.equals("1") ) {
+                TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed();
+                TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
                 TestHelper.waitXpathElement("//input[@type='submit']").click();
                 break;
             }
             TestHelper.waitMsec(100);
         }
+        TestHelper.waitSec(5);
         TestHelper.waitXpathElement("//*[@class='soi-share']");
         System.out.println(TestHelper.waitXpathElement("//h6").getText());
     }
@@ -76,6 +81,8 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
+            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
                 second = "1";
@@ -85,11 +92,14 @@ public class SimultaneouslySOISubmission {
         }
         for(int i=0;i<3000;i++) {
             if(first.equals("1") && second.equals("1") && third.equals("1") ) {
+                TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed();
+                TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
                 TestHelper.waitXpathElement("//input[@type='submit']").click();
                 break;
             }
             TestHelper.waitMsec(100);
         }
+        TestHelper.waitSec(5);
         TestHelper.waitXpathElement("//*[@class='soi-share']");
         System.out.println(TestHelper.waitXpathElement("//h6").getText());
     }
@@ -112,6 +122,8 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
+            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
                 third = "1";
@@ -121,11 +133,14 @@ public class SimultaneouslySOISubmission {
         }
         for(int i=0;i<3000;i++) {
             if(first.equals("1") && second.equals("1") && third.equals("1") ) {
+                TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed();
+                TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
                 TestHelper.waitXpathElement("//input[@type='submit']").click();
                 break;
             }
             TestHelper.waitMsec(100);
         }
+        TestHelper.waitSec(5);
         TestHelper.waitXpathElement("//*[@class='soi-share']");
         System.out.println(TestHelper.waitXpathElement("//h6").getText());
     }
