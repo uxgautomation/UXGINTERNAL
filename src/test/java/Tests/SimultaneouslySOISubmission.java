@@ -4,6 +4,7 @@ import Common.TestHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 public class SimultaneouslySOISubmission {
 
@@ -27,7 +28,14 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//*[@class='wl-unreg-user-menu']/a[1]").click();
         TestHelper.waitXpathElement("//*[@id='edit-name']").sendKeys("20151210112512@mailforspam.com");
         TestHelper.waitXpathElement("//*[@id='edit-pass']").sendKeys("Uxgpassword1");
-        TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+        for (int c = 0; c < 300; c++) {
+            if (TestHelper.waitXpathElement("//*[@id='edit-submit']").isDisplayed()
+                    && TestHelper.waitXpathElement("//*[@id='edit-submit']").isEnabled()) {
+                TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+                break;
+            }
+            TestHelper.waitMsec(100);
+        }
         TestHelper.waitXpathElement("//*[contains(@class,'wl-user-menu')]//*[contains(@class,'user-picture')]");
         TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
         TestHelper.waitXpathElement("//input[@type='submit']").click();
@@ -56,7 +64,14 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//*[@class='wl-unreg-user-menu']/a[1]").click();
         TestHelper.waitXpathElement("//*[@id='edit-name']").sendKeys("20151210130625@mailforspam.com");
         TestHelper.waitXpathElement("//*[@id='edit-pass']").sendKeys("Uxgpassword1");
-        TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+        for (int c = 0; c < 300; c++) {
+            if (TestHelper.waitXpathElement("//*[@id='edit-submit']").isDisplayed()
+                    && TestHelper.waitXpathElement("//*[@id='edit-submit']").isEnabled()) {
+                TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+                break;
+            }
+            TestHelper.waitMsec(100);
+        }
         TestHelper.waitXpathElement("//*[contains(@class,'wl-user-menu')]//*[contains(@class,'user-picture')]");
         TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
         TestHelper.waitXpathElement("//input[@type='submit']").click();
@@ -85,7 +100,14 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//*[@class='wl-unreg-user-menu']/a[1]").click();
         TestHelper.waitXpathElement("//*[@id='edit-name']").sendKeys("20151211105952@mailforspam.com");
         TestHelper.waitXpathElement("//*[@id='edit-pass']").sendKeys("Uxgpassword1");
-        TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+        for (int c = 0; c < 300; c++) {
+            if (TestHelper.waitXpathElement("//*[@id='edit-submit']").isDisplayed()
+                    && TestHelper.waitXpathElement("//*[@id='edit-submit']").isEnabled()) {
+                TestHelper.waitXpathElement("//*[@id='edit-submit']").click();
+                break;
+            }
+            TestHelper.waitMsec(100);
+        }
         TestHelper.waitXpathElement("//*[contains(@class,'wl-user-menu')]//*[contains(@class,'user-picture')]");
         TestHelper.waitXpathElement("//input[@type='submit']").isEnabled();
         TestHelper.waitXpathElement("//input[@type='submit']").click();
