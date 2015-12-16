@@ -4,13 +4,12 @@ import Common.TestHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class SimultaneouslySOISubmission {
 
     public static String first = "0";
-    public static String second = "0";
-    public static String third = "0";
+    public static String second = "1";
+    public static String third = "1";
 
     @Before
     public void setUp() {
