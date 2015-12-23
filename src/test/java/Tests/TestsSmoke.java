@@ -10,7 +10,7 @@ import org.junit.runners.MethodSorters;
 public class TestsSmoke {
     @BeforeClass
     public static void setPrecondition() {
-        TestHelper.droneDriver("firefox");
+        TestHelper.droneDriver("chrome");
         TestHelper.setFullscreen();
         Environments.createMailBox();
         Environments.passRegistration();
@@ -18,7 +18,7 @@ public class TestsSmoke {
     }
     @Before
     public void setUp() {
-        TestHelper.droneDriver("firefox");
+        TestHelper.droneDriver("chrome");
         TestHelper.setFullscreen();
     }
     @After

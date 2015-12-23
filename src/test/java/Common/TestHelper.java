@@ -55,7 +55,7 @@ public class TestHelper {
 
     public static void droneDriver(String browser) {
         if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
+            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
             driver = new ChromeDriver();
         } else if (browser.equals("firefox")) {
             System.setProperty("webdriver.firefox.driver", "/usr/bin/firefox");
