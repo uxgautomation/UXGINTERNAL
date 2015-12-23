@@ -4,7 +4,6 @@ import PageObjects.AuthorizationPage;
 import PageObjects.HomePage;
 import PageObjects.RegistrationPage;
 import org.openqa.selenium.By;
-import ru.yandex.qatools.allure.annotations.Step;
 
 public class Environments {
     //    public static String BASE_URL = "http://test2.vocalpoint.com";
@@ -31,7 +30,6 @@ public class Environments {
         TestHelper.waitXpathElement("//*[text()='Your Inbox:']");
         emailValue = mail;
     }
-    @Step("Confirmation of registration in mail.")
     public static void confirmRegistrationInMail() {
         TestHelper.get("http://www.mfsa.info/mail/" + emailValue);
         for (int i = 0; i < 60; i++) {
@@ -62,7 +60,6 @@ public class Environments {
         Environments.confirmRegistrationInMail();
         RegistrationPage.verifyCompletionOfRegistration();
     }
-    @Step("Pass authorization with valid credentials.")
     public static void logIn() {
         HomePage.clickOnLogInButton();
         AuthorizationPage.fillInputLogin(Environments.emailValue + "@mailforspam.com");
@@ -70,7 +67,6 @@ public class Environments {
         AuthorizationPage.submitAuthorization();
     }
 
-    @Step("Go to the testable environment.")
     public static void goTo(String url) {
         TestHelper.get(url);
     }

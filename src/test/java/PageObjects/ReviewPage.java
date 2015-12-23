@@ -2,7 +2,6 @@ package PageObjects;
 
 import Common.TestHelper;
 import org.junit.Assert;
-import ru.yandex.qatools.allure.annotations.Step;
 
 public class ReviewPage {
     public static String xpathReviewInReviews = "//a[contains(@href,'/story')]";
@@ -19,36 +18,29 @@ public class ReviewPage {
     public static String xpathNoRateErrorMessage = "//*[contains(@class,'status-message')]/div[text()]";
     public static String xpathNoTextErrorMessage = "//*[contains(@class,'status-message') and text()]";
 
-    @Step
     public static void setRate() {
         TestHelper.waitXpathElement(xpathFirstStar).click();
     }
-    @Step
     public static void clickOnNextButton() {
         TestHelper.waitXpathElement(xpathButtonNextOrGoBack).isDisplayed();
         TestHelper.waitXpathElement(xpathButtonNextOrGoBack).isEnabled();
         TestHelper.waitSec(1);
         TestHelper.waitXpathElement(xpathButtonNextOrGoBack).click();
     }
-    @Step
     public static void fillInTextarea() {
         TestHelper.waitXpathElement(xpathTextareaReview).sendKeys("Selenium review body text.");
     }
-    @Step
     public static void clickOnSubmitMyReviewButton() {
         TestHelper.waitXpathElement(xpathButtonSubmitReview).click();
     }
-    @Step
     public static void verifyThatReviewIsAdded() {
         Assert.assertEquals("Selenium review body text.", TestHelper.waitXpathElement(xpathTextReview).getText());
     }
 
-    @Step
     public static void verifyThatNoRateErrorMessageIsDisplayed() {
         Assert.assertEquals(true, TestHelper.waitXpathElement(xpathNoRateErrorMessage).isDisplayed());
     }
 
-    @Step
     public static void verifyThatNoTextErrorMessageIsDisplayed() {
         Assert.assertEquals(true, TestHelper.waitXpathElement(xpathNoTextErrorMessage).isDisplayed());
     }

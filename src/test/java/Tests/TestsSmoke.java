@@ -5,10 +5,7 @@ import PageObjects.*;
 import Common.Environments;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-import ru.yandex.qatools.allure.annotations.*;
-import ru.yandex.qatools.allure.model.SeverityLevel;
 
-@Title("Smoke Test Suite")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestsSmoke {
     @BeforeClass
@@ -27,9 +24,6 @@ public class TestsSmoke {
         TestHelper.quit();
     }
 
-    @Features("Authorization")
-    @Stories("User should be able to log in via existed account")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void userShouldBeAbleToLogIn() {
         Environments.goTo(Environments.BASE_URL);
@@ -40,9 +34,6 @@ public class TestsSmoke {
         AuthorizationPage.verifyWelcomeMessage();
     }
 
-    @Features("Comments")
-    @Stories("User should be able to leave comments in articles")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void a_shouldBeAbleToAddCommentInArticle() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -52,9 +43,6 @@ public class TestsSmoke {
         ArticlePage.verifyThatCommentIsAdded();
     }
 
-    @Features("Comments")
-    @Stories("User should be able to see comments section in account profile")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void b_shouldSeeLeftCommentsInProfile() {
         Environments.goTo(Environments.BASE_URL);
@@ -64,9 +52,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatCommentInSectionIsDisplayed();
     }
 
-    @Features("Comments")
-    @Stories("User should be able to delete comments in account profile")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void c_shouldBeAbleDeleteCommentInProfile() {
         Environments.goTo(Environments.BASE_URL);
@@ -78,9 +63,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatCommentIsDeleted();
     }
 
-    @Features("Loves")
-    @Stories("User should be able to add loves in articles")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void a_shouldBeAbleToAddLoveInArticle() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -89,9 +71,6 @@ public class TestsSmoke {
         ArticlePage.verifyThatLovesCounterIsIncreased();
     }
 
-    @Features("Loves")
-    @Stories("User should be able to unlove in article")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void b_shouldBeAbleToDeleteLoveInArticle() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -100,9 +79,6 @@ public class TestsSmoke {
         ArticlePage.verifyThatLovesCounterIsDecreased();
     }
 
-    @Features("Loves")
-    @Stories("User should be able to overview loves section in account profile")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void c_shouldSeeLovesInProfile() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -113,9 +89,6 @@ public class TestsSmoke {
         ProfilePage.verifyLoveInLovesSection();
     }
 
-    @Features("Loves")
-    @Stories("User should be able to delete love in loves section of account profile")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void d_shouldBeAbleToDeleteLoveInProfile() {
         Environments.goTo(Environments.BASE_URL);
@@ -127,9 +100,6 @@ public class TestsSmoke {
         ProfilePage.verifyLoveDeleted();
     }
 
-    @Features("Authorization")
-    @Stories("Unauthorized user should be redirected to the authorization when add love in article")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void unauthorizedUserShouldBeRedirectedToAuthorizationWhenAddLove() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -137,27 +107,18 @@ public class TestsSmoke {
         ArticlePage.verifyRedirectionToLogInAfterTryToAddLove();
     }
 
-    @Features("Authorization")
-    @Stories("Unauthorized user shouldn't be able to write comments in article")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void unauthorizedUserShouldNotBeAbleWriteCommentsInArticle() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
         ArticlePage.verifyInabilityToLeaveCommentsByUnauthorizedUser();
     }
 
-    @Features("Authorization")
-    @Stories("Unauthorized user should see Sign In and Register buttons instead of comments textarea")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void unauthorizedUserShouldSeeLogInAndRegisterButtonInsteadCommentBlock() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
         ArticlePage.verifyAvailabilityOfSignInAndRegisterButtonsInsteadCommentsBlock();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with empty First Name input")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessagesInRegistrationFormWhenLeftFirstNameEmpty() {
         Environments.goTo(Environments.BASE_URL);
@@ -166,9 +127,6 @@ public class TestsSmoke {
         RegistrationPage.verifyFirstNameErrorMessage();
 
     }
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with empty Last Name input")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenLeftLastNameEmpty() {
         Environments.goTo(Environments.BASE_URL);
@@ -177,9 +135,6 @@ public class TestsSmoke {
         RegistrationPage.verifyLastNameErrorMessage();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with empty Email input")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenLeftEmailEmpty() {
         Environments.goTo(Environments.BASE_URL);
@@ -188,9 +143,6 @@ public class TestsSmoke {
         RegistrationPage.verifyEmailErrorMessage();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with empty Password input")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenLeftPasswordEmpty() {
         Environments.goTo(Environments.BASE_URL);
@@ -199,9 +151,6 @@ public class TestsSmoke {
         RegistrationPage.verifyPasswordErrorMessage();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with empty Verify Password input")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenLeftVerifiedPasswordEmpty() {
         Environments.goTo(Environments.BASE_URL);
@@ -209,9 +158,6 @@ public class TestsSmoke {
         RegistrationPage.verifyPasswordConfirmationErrorMessage();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with not defined date of birth")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenDateOfBirthNotDefined() {
         Environments.goTo(Environments.BASE_URL);
@@ -220,9 +166,6 @@ public class TestsSmoke {
         RegistrationPage.verifyErrorMessageForNotDefinedDateOfBirth();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with not defined gender")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenGenderNotDefined() {
         Environments.goTo(Environments.BASE_URL);
@@ -231,9 +174,6 @@ public class TestsSmoke {
         RegistrationPage.verifyErrorMessageForNotDefinedDateOfBirth();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to pass registration with disabled T&C checkbox")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenTCCheckboxNotAgreed() {
         Environments.goTo(Environments.BASE_URL);
@@ -242,9 +182,6 @@ public class TestsSmoke {
         RegistrationPage.verifyErrorMessageForNotDefinedGender();
     }
 
-    @Features("Authorization")
-    @Stories("User should see error message in registration form when tries to fill in Verify Password input with wrong value")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageInRegistrationFormWhenConfirmationPasswordIsFailed() {
         Environments.goTo(Environments.BASE_URL);
@@ -253,10 +190,6 @@ public class TestsSmoke {
         RegistrationPage.verifyErrorMessageForNotCheckedTCCheckbox();
     }
 
-    @Features("Authorization")
-    @Stories("User should stay logged in article page if he pass authorization from article page")
-    @Severity(SeverityLevel.CRITICAL)
-    @Issue("WL-1918")
     @Test
     public void shouldStayAtArticleAfterLogInArticle() {
         Environments.goTo(Environments.BASE_URL + Environments.ARTICLE);
@@ -264,9 +197,6 @@ public class TestsSmoke {
         ArticlePage.verifyThatCurrentPageIsArticle();
     }
 
-    @Features("Profile")
-    @Stories("User should be able to change biography text in profile")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldBeAbleToEditBio() {
         Environments.goTo(Environments.BASE_URL);
@@ -277,9 +207,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatChangesInProfileIsAppeared();
     }
 
-    @Features("Profile")
-    @Stories("User should see welcome message in user profile")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeWelcomeMessageInProfile() {
         Environments.goTo(Environments.BASE_URL);
@@ -288,9 +215,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatWelcomeMessageInProfileIsAppeared();
     }
 
-    @Features("Authorization")
-    @Stories("User should see Sign In with Facebook button in authorization form.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldSeeSignViaFacebookButton() {
         Environments.goTo(Environments.BASE_URL);
@@ -298,9 +222,6 @@ public class TestsSmoke {
         AuthorizationPage.verifyAvailabilityOfFacebookButton();
     }
 
-    @Features("Authorization")
-    @Stories("User should see Forgot your password? link in authorization form.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldSeeForgotYourPasswordLink() {
         Environments.goTo(Environments.BASE_URL);
@@ -308,9 +229,6 @@ public class TestsSmoke {
         AuthorizationPage.verifyAvailabilityOfForgorPasswordLink();
     }
 
-    @Features("Authorization")
-    @Stories("User should see eight social buttons on the footer.")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeEightSocialButtonsOnFooter() {
         Environments.goTo(Environments.BASE_URL);
@@ -318,18 +236,12 @@ public class TestsSmoke {
         HomePage.verifyThatFooterHaveEightSocialButtons();
     }
 
-    @Features("Authorization")
-    @Stories("User should see hamburger button is exist and enabled.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldSeeHamburgerButton() {
         Environments.goTo(Environments.BASE_URL);
         HomePage.verifyThatHamburgerButtonIsExist();
     }
 
-    @Features("Profile")
-    @Stories("User should see enabled Connect with Facebook button.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldConnectFacebookButton() {
         Environments.goTo(Environments.BASE_URL);
@@ -338,9 +250,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatConnectFacebookEnabled();
     }
 
-    @Features("Profile")
-    @Stories("User should see enabled Connect with Twitter button.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldConnectTwitterButton() {
         Environments.goTo(Environments.BASE_URL);
@@ -349,9 +258,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatConnectTwitterEnabled();
     }
 
-    @Features("Profile")
-    @Stories("User should see enabled Connect Your Blog button.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldConnectBlogButton() {
         Environments.goTo(Environments.BASE_URL);
@@ -360,9 +266,6 @@ public class TestsSmoke {
         ProfilePage.verifyThatConnectBlogEnabled();
     }
 
-    @Features("Reviews")
-    @Stories("User should be able to left review.")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void shouldBeAbleToLeftReview() {
         Environments.goTo(Environments.BASE_URL + Environments.REVIEW);
@@ -374,9 +277,6 @@ public class TestsSmoke {
         ReviewPage.verifyThatReviewIsAdded();
     }
 
-    @Features("Reviews")
-    @Stories("User should see error message when tries to continue reviewing without setting of rate.")
-    @Severity(SeverityLevel.NORMAL)
     @Test
     public void shouldSeeErrorMessageWhenNoStarsSetInReview() {
         Environments.goTo(Environments.BASE_URL + Environments.REVIEW);
@@ -384,9 +284,6 @@ public class TestsSmoke {
         ReviewPage.verifyThatNoRateErrorMessageIsDisplayed();
     }
 
-    @Features("Reviews")
-    @Stories("User should see error message when tries to continue reviewing without filling of textarea.")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void shouldSeeErrorMessageWhenNoTextInTextarea() {
         Environments.goTo(Environments.BASE_URL + Environments.REVIEW);

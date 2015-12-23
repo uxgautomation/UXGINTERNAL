@@ -4,7 +4,6 @@ import Common.Environments;
 import Common.TestHelper;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import ru.yandex.qatools.allure.annotations.Step;
 
 public class RegistrationPage {
     public static String xpathInputFirstName = "//*[@id='wrapper-first-name']//input";
@@ -47,62 +46,49 @@ public class RegistrationPage {
     public static String spaRegistrate = "//*[contains(text(),'Regístrate')]";
 
 
-    @Step("Fill First Name input with valid value.")
     public static void fillFirstNameInput() {
         TestHelper.waitXpathElement(xpathInputFirstName).sendKeys(Environments.emailValue);
     }
-    @Step("Fill Last Name input with valid value.")
     public static void fillLastNameInput() {
         TestHelper.waitXpathElement(xpathInputLastName).sendKeys("Smith");
     }
-    @Step("Fill Last Name input with valid value.")
     public static void fillEmailInput() {
         TestHelper.waitXpathElement(xpathInputEmail).sendKeys(Environments.emailValue + "@mailforspam.com");
     }
-    @Step("Fill Password input with valid value.")
     public static void fillPasswordInput() {
         TestHelper.waitXpathElement(xpathInputPassword).sendKeys(Environments.validPassword);
     }
-    @Step("Fill Verify Password input with valid value.")
     public static void fillConfirmedPasswordInput() {
         TestHelper.waitXpathElement(xpathInputConfirmedPassword).sendKeys(Environments.validPassword);
     }
-    @Step("Set month of birth.")
     public static void setBirthMonth() {
         TestHelper.scrollPage(400);
         TestHelper.waitXpathElement(xpathButtonDropdownMonth).click();
         TestHelper.waitMsec(500);
         TestHelper.waitXpathElement(xpathJanuaryMonth).click();
     }
-    @Step("Set day of birth.")
     public static void setBirthDay() {
         TestHelper.waitXpathElement(xpathButtonDropdownDay).click();
         TestHelper.waitXpathElement(xpath1Day).click();
     }
-    @Step("Set year of birth.")
     public static void setBirthYear() {
         TestHelper.waitXpathElement(xpathButtonDropdownYear).click();
         TestHelper.waitXpathElement(xpath1993Year).click();
     }
-    @Step("Set gender.")
     public static void setGender() {
         TestHelper.driver.findElement(By.xpath(xpathRadiobuttonGender)).click();
     }
-    @Step("Click on Terms & Conditions checkbox.")
     public static void agreeWithTCCheckbox() {
         TestHelper.driver.findElement(By.xpath(xpathTCCheckbox)).click();
     }
-    @Step("Submit registration by click on Register button.")
     public static void submitRegistration() {
         TestHelper.moveToXpathElement(xpathButtonSubmitRegistration);
         TestHelper.waitXpathElement(xpathButtonSubmitRegistration).click();
     }
-    @Step("Verify that creation of new account is complete.")
     public static void verifyThatAccountIsCreated() {
         TestHelper.waitXpathElement(xpathAfterRegistrationSentEmailPopUp);
     }
 
-    @Step("Verify First Name empty input error message.")
     public static void verifyFirstNameErrorMessage() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please enter First Name.",
@@ -112,7 +98,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathFirstNameErrorMessage).getText());
         }
     }
-    @Step("Verify Last Name empty input error message.")
     public static void verifyLastNameErrorMessage() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please enter Last Name.",
@@ -122,7 +107,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathLastNameErrorMessage).getText());
         }
     }
-    @Step("Verify Email empty input error message.")
     public static void verifyEmailErrorMessage() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please enter a valid email address.",
@@ -132,7 +116,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathEmailErrorMessage).getText());
         }
     }
-    @Step("Verify Password empty input error message.")
     public static void verifyPasswordErrorMessage() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please enter a valid password containing at least 8 characters with 1 uppercase letter and 1 number.",
@@ -142,7 +125,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathPasswordErrorMessage).getText());
         }
     }
-    @Step("Verify Password Confirmation empty input error message.")
     public static void verifyPasswordConfirmationErrorMessage() {
         TestHelper.waitXpathElement(xpathInputConfirmedPassword).click();
         TestHelper.driver.findElement(By.xpath(xpathRadiobuttonGender)).click();
@@ -154,7 +136,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathVerifyPasswordErrorMessage).getText());
         }
     }
-    @Step("Verify error message when Date Of Birth is not defined.")
     public static void verifyErrorMessageForNotDefinedDateOfBirth() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please enter your date of birth.", TestHelper.waitXpathElement(xpathDateOfBirthErrorMessage).getText());
@@ -163,7 +144,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathDateOfBirthErrorMessage).getText());
         }
     }
-    @Step("Verify error message when Gender is not defined.")
     public static void verifyErrorMessageForNotDefinedGender() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please select Gender.",
@@ -173,7 +153,6 @@ public class RegistrationPage {
                     TestHelper.waitXpathElement(xpathGenderErrorMessage).getText());
         }
     }
-    @Step("Verify error message when Terms and Conditions checkbox is not enabled.")
     public static void verifyErrorMessageForNotCheckedTCCheckbox() {
         if (TestHelper.waitXpathElement(engRegister).isDisplayed()) {
             Assert.assertEquals("Please read and agree with the Terms and Conditions.",
@@ -184,7 +163,6 @@ public class RegistrationPage {
         }
     }
 
-    @Step("Verify that registration is passed correctly.")
     public static void verifyCompletionOfRegistration() {
         TestHelper.waitXpathElement("//*[@class='row registration-successful-dialog']");
     }
