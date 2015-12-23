@@ -7,10 +7,10 @@ import org.openqa.selenium.By;
 
 public class Environments {
     //    public static String BASE_URL = "http://test2.vocalpoint.com";
-    public static String BASE_URL = "https://ovp.dev";
+//    public static String BASE_URL = "https://ovp.dev";
     public static String ARTICLE = "/articles/selenium-article";
-    //    public static String REVIEW = "/reviews/8318/story";
-    public static String REVIEW = "/reviews/49/story";
+        public static String REVIEW = "/reviews/8318/story";
+//    public static String REVIEW = "/reviews/49/story";
     public static String emailValue = "default";
     public static String validPassword = "Uxgpassword1";
 
