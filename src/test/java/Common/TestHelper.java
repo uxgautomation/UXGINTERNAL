@@ -112,7 +112,16 @@ public class TestHelper {
         return driver.findElement(By.id(selector));
     }
     public static WebElement waitXpathElement(String selector) {
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 450; i++) {
+            if (driver.findElements(By.xpath(selector)).size() > 0) {
+                break;
+            }
+            waitMsec(100);
+        }
+        return driver.findElement(By.xpath(selector));
+    }
+    public static WebElement longWaitXpathElement(String selector) {
+        for (int i = 0; i < 3000; i++) {
             if (driver.findElements(By.xpath(selector)).size() > 0) {
                 break;
             }
@@ -182,11 +191,27 @@ public class TestHelper {
     public static void moveToIdElement(String selector) {
         new Actions(driver).moveToElement(driver.findElement(By.id(selector)));
     }
-    public static void moveXpathElement(String selector) {
-        new Actions(driver).moveToElement(driver.findElement(By.xpath(selector)));
+    public static void moveToXpathElement(String selector) {
+        new Actions(driver).moveToElement(driver.findElement(By.xpath(selector))).build().perform();
     }
     public static void moveToCssElement(String selector) {
-        new Actions(driver).moveToElement(driver.findElement(By.cssSelector(selector)));
+        new Actions(driver).moveToElement(driver.findElement(By.cssSelector(selector))).build().perform();
+    }
+
+    public static void moveToIdElementAndClickInCenter(String selector) {
+        int width = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("width"))/2;
+        int height = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("height"))/2;
+        new Actions(driver).moveToElement(driver.findElement(By.id(selector)),width,height).click().build().perform();
+    }
+    public static void moveToXpathElementAndClickInCenter(String selector) {
+        int width = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("width"))/2;
+        int height = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("height"))/2;
+        new Actions(driver).moveToElement(driver.findElement(By.xpath(selector)),width,height).click().build().perform();
+    }
+    public static void moveToCssElementAndClickInCenter(String selector) {
+        int width = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("width"))/2;
+        int height = Integer.parseInt(TestHelper.waitXpathElement(selector).getCssValue("height"))/2;
+        new Actions(driver).moveToElement(driver.findElement(By.cssSelector(selector)),width,height).click().build().perform();
     }
 
     public static int stringToInteger(String selector) {

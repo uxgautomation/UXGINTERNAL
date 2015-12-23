@@ -40,7 +40,7 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
-            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.moveToXpathElement("//*[contains(@class,'form-actions')]");
             TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
@@ -81,7 +81,7 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
-            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.moveToXpathElement("//*[contains(@class,'form-actions')]");
             TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
@@ -122,7 +122,7 @@ public class SimultaneouslySOISubmission {
         TestHelper.waitXpathElement("//input[@type='submit']").click();
         TestHelper.waitXpathElement("//input[contains(@class,'first-name')]");
         for(int i=0;i<3000;i++) {
-            TestHelper.moveXpathElement("//*[contains(@class,'form-actions')]");
+            TestHelper.moveToXpathElement("//*[contains(@class,'form-actions')]");
             TestHelper.waitSec(1);
             if(TestHelper.waitXpathElement("//input[@type='submit']").isDisplayed()
                     && TestHelper.waitXpathElement("//input[@type='submit']").isEnabled()) {
